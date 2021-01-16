@@ -1,0 +1,62 @@
+.container {
+	margin: auto auto;
+	max-width: 400px;
+	padding: 20px;
+	height: 140;
+}
+
+.logo {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+	background-color: #fff;
+}
+
+.input {
+	width: 100%;
+	padding: 10px;
+	border: #ddd 1px solid;
+	border-radius: 5px;
+	margin-top: 15px;
+	background-color: #f7f7f7;
+	font-size: 14px;
+}
+
+.button {
+	width: 100%;
+	padding: 10px;
+	margin-top: 20px;
+	background: #f13535;
+	color: #fff;
+	cursor: pointer;
+	border-radius: 10px;
+	margin-bottom: 22px;
+}
+
+/*
+.button:hover {
+	background: rgb(167, 18, 18);
+}
+with out using hover property the Sign Up button is displaying Login button property
+*/
+
+/* {seperator}  & {login with linkedin button} also got the same styling with explicitly styling the button */
+
+.terms-and-condition {
+	margin-top: 5px;
+	text-align: center;
+	color: #a0a09f;
+	font-size: 15px;
+}
+
+.footer p {
+	margin-top: 35px;
+	text-align: center;
+	color: #a0a09f;
+	font-size: 15px;
+}
+
+.login {
+	font-size: 18px;
+}

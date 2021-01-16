@@ -1,0 +1,88 @@
+/*
+.primary {
+	color: orange;
+}
+#kk {
+	text-align: center;
+}
+*/
+
+.container {
+	margin: auto auto;
+	max-width: 400px;
+	padding: 20px;
+	height: 140;
+}
+
+.logo {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+}
+
+.input {
+	width: 100%;
+	padding: 10px;
+	border: #ddd 1px solid;
+	border-radius: 5px;
+	margin-top: 15px;
+	background-color: #f7f7f7;
+	font-size: 14px;
+}
+
+.button {
+	width: 100%;
+	padding: 10px;
+	margin-top: 20px;
+	background: #f13535;
+	color: #fff;
+	cursor: pointer;
+	border-radius: 10px;
+}
+
+.button:hover {
+	background: rgb(167, 18, 18);
+}
+
+.forgot-password {
+	text-align: center;
+	color: blue;
+	margin-top: 0px;
+	margin-bottom: 40px;
+}
+
+.seperator h6 {
+	width: 100%;
+	text-align: center;
+	color: rgb(185, 178, 178);
+	border-bottom: 1px solid rgb(185, 178, 178);
+	line-height: 0.1em;
+	margin: 10px 0 20px;
+}
+
+.seperator span {
+	background: #fff;
+	padding: 0 10px;
+}
+
+.linkedin {
+	width: 100%;
+	padding: 10px;
+	margin-top: 4px;
+	background: #1da1f2;
+	color: #fff;
+	cursor: pointer;
+	border-radius: 10px;
+}
+
+.footer p {
+	margin-top: 85px;
+	text-align: center;
+	color: #a0a09f;
+	font-size: 15px;
+}
+
+.signup {
+	font-size: 18px;
+}
