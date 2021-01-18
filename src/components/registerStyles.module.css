@@ -1,5 +1,5 @@
 .container {
-	margin: auto auto;
+	margin: 20px auto;
 	max-width: 400px;
 	padding: 20px;
 	height: 140;
@@ -21,6 +21,8 @@
 	margin-top: 15px;
 	background-color: #f7f7f7;
 	font-size: 14px;
+
+	box-sizing: border-box;
 }
 
 .button {
@@ -32,8 +34,12 @@
 	cursor: pointer;
 	border-radius: 10px;
 	margin-bottom: 22px;
+	font-size: 17px;
 }
 
+.button:hover {
+	background: rgb(167, 18, 18);
+}
 /*
 .button:hover {
 	background: rgb(167, 18, 18);
@@ -43,15 +49,45 @@ with out using hover property the Sign Up button is displaying Login button prop
 
 /* {seperator}  & {login with linkedin button} also got the same styling with explicitly styling the button */
 
-.terms-and-condition {
+.seperator h6 {
+	width: 100%;
+	text-align: center;
+	color: rgb(185, 178, 178);
+	border-bottom: 1px solid rgb(185, 178, 178);
+	line-height: 0.1em;
+	margin: 10px 0 20px;
+}
+
+.seperator span {
+	background: #fff;
+	padding: 0 10px;
+}
+
+.linkedin {
+	width: 100%;
+	padding: 10px;
+	margin-top: 4px;
+	background: #1da1f2;
+	color: #fff;
+	cursor: pointer;
+	border-radius: 10px;
+	font-size: 17px;
+}
+
+.termsAndCondition {
 	margin-top: 5px;
 	text-align: center;
 	color: #a0a09f;
 	font-size: 15px;
+	margin-top: 20px;
+}
+
+.termsAndCondition a {
+	text-decoration: none;
 }
 
 .footer p {
-	margin-top: 35px;
+	margin-top: 100px;
 	text-align: center;
 	color: #a0a09f;
 	font-size: 15px;

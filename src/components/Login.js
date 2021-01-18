@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 
 import {ReactComponent as LogoIcon } from "../assets/mainlogo.svg"; 
-import "./loginStyles.css";
+import styles from "./loginStyles.module.css";
 
 const Login = ( {setAuth} ) => {
 
@@ -54,31 +54,31 @@ const Login = ( {setAuth} ) => {
 
     return (
         <Fragment>
-            <div className="container">
-                <LogoIcon className="logo"/>
+            <div className={styles.container}>
+                <LogoIcon className={styles.logo}/>
                 <form onSubmit={onSubmitForm}>
                     <input type="email" name="email" placeholder="Email" 
-                    className="input" value={email} onChange={e => onChange(e)} />
+                    className={styles.input} value={email} onChange={e => onChange(e)} />
                     
                     <input type="password" name="password" placeholder="Password" 
-                    className="input" value={password} onChange={e => onChange(e)} />
+                    className={styles.input} value={password} onChange={e => onChange(e)} />
                     
                     <div>
-                    <button className="button">Log in</button>
+                    <button className={styles.button}>Log in</button>
                     </div>    
                 </form>
-                <div className="forgot-password">
+                <div className={styles.forgotPassword}>
                     Forgot Password?
                 </div>
-                <div className="seperator">
+                <div className={styles.seperator}>
                 <h6><span> or </span></h6>
                 </div>
                 <div>
-                    <button className="linkedin"> Log in with LinkedIn </button>
+                    <button className={styles.linkedin}> Log in with LinkedIn </button>
                 </div>
-                <div className="footer">
+                <div className={styles.footer}>
                     <p>Don’t have an account? 
-                    <Link to="/register" className="signup"> Sign Up </Link>
+                    <Link to="/register" className={styles.signup}> Sign Up </Link>
                     </p>
                 </div>
                 <ToastContainer />

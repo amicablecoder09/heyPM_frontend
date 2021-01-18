@@ -1,0 +1,15 @@
+.container-dashboard {
+	margin: 0;
+	padding: 0;
+}
+
+.logout {
+	width: 100%;
+	padding: 10px;
+	margin-top: 20px;
+}
+
+.outer {
+	max-width: 500px;
+	margin: auto;
+}

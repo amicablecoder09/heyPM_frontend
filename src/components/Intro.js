@@ -4,25 +4,21 @@ import { Link } from "react-router-dom";
 
 import {ReactComponent as IntroLogoIcon } from "../assets/intrologo.svg"; 
 import {ReactComponent as GetStartedIcon } from "../assets/getstarted.svg";
-import "./introStyles.css";
+import styles from "./introStyles.module.css";
 
 const Intro = () =>{
     return(
         <Fragment>
-        <div className="container">
-            <IntroLogoIcon className="intrologo"/>
-            <div className="getstartedlogo">
+        <div className={styles.container}>
+            <IntroLogoIcon className={styles.intrologo}/>
+            <div className={styles.getstartedlogo}>
                 <GetStartedIcon />
             </div>
             <Link to="/login"> 
-                <button className="get-started-button"> Get started </button>
+                <button className={styles.getStartedButton}> Get started </button>
             </Link>
-            
-            
-           
         </div>
-        </Fragment>
-        
+        </Fragment>  
     );
 }
 

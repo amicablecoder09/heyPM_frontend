@@ -1,0 +1,55 @@
+.Navbar {
+	width: 100%;
+	margin: auto;
+	border: 0px solid rgb(236, 238, 240);
+	box-shadow: 0 2px 5px rgb(155, 155, 155);
+	padding: 16px;
+	display: flex;
+	flex-direction: row;
+	align-content: center;
+	height: 40px;
+	/* position: relative;
+    background-color: white; */
+	justify-content: space-between;
+	box-sizing: content-box;
+}
+
+.left-header {
+	display: flex;
+}
+
+.profile {
+	background: lightblue;
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+	margin-right: 10px;
+	margin-top: 0px;
+	/* display: flex;
+    align-content: center; */
+}
+
+.profile-name p {
+	display: flex;
+	align-content: center;
+	margin-top: 10px;
+	margin-bottom: 0px;
+	font-size: 18px;
+	font-weight: bold;
+	/* background: crimson; */
+}
+.saved p {
+	/*margin-left: 120px; this is not needed */
+	/* float: right;
+	display: flex;
+    text-align: right;
+    Im not sure about this also*/
+	display: flex;
+	margin-top: 10px;
+	font-weight: bold;
+}
+
+.bookmark {
+	display: block;
+	font-size: 1.23em;
+}

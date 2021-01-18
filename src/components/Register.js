@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 
 import {ReactComponent as LogoIcon } from "../assets/mainlogo.svg"; 
-import "./registerStyles.css"
+import styles from "./registerStyles.module.css"
 
 const Register = ({setAuth}) => {
     const [inputs, setInputs] = useState({
@@ -50,29 +50,30 @@ const Register = ({setAuth}) => {
 
     return (
         <Fragment>
-            <div className="container"> 
-                <LogoIcon className="logo"/>
+            <div className={styles.container}> 
+                <LogoIcon className={styles.logo} />
                 <form onSubmit={onSubmitForm} >
                     
-                    <input type = "text" name="name" placeholder="Fullname" className="input" value={name} onChange={e => onChange(e) } />
-                    <input type = "email" name="email" placeholder="Email" className="input" value={email} onChange={e => onChange(e) } />
-                    <input type = "password" name="password" placeholder="Password" className="input" value={password} onChange={e => onChange(e) } />
+                    <input type = "text" name="name" placeholder="Fullname" className={styles.input} value={name} onChange={e => onChange(e) } />
+                    <input type = "email" name="email" placeholder="Email" className={styles.input} value={email} onChange={e => onChange(e) } />
+                    <input type = "password" name="password" placeholder="Password" className={styles.input} value={password} onChange={e => onChange(e) } />
                     <div>
-                    <button className="button">Sign Up</button>
+                    <button className={styles.button}>Sign Up</button>
                     </div>
                 </form>
-                <div className="seperator">
+                <div className={styles.seperator}>
                 <h6><span> or </span></h6>
                 </div>
                 <div>
-                    <button className="linkedin"> Log in with LinkedIn </button>
+                    <button className={styles.linkedin}> Log in with LinkedIn </button>
                 </div>
-                <p className="terms-and-condition">By signing up you accept the <a href="www.google.com" >Terms of Service</a> and 
+                <p className={styles.termsAndCondition}>By signing up you accept the 
+                <a href="www.google.com" >Terms of Service</a> <br/> and 
                 <a href="www.google.com"> Privacy Policy</a>
                 </p>
-                <div className="footer">
+                <div className={styles.footer}>
                     <p>Already have an account?
-                    <Link to="/login" className="login"> Log in </Link>
+                    <Link to="/login" className={styles.login}> Log in </Link>
                     </p>
                 </div>
                 <ToastContainer/>
