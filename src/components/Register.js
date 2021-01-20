@@ -26,7 +26,7 @@ const Register = ({setAuth}) => {
             const body = { email, password, name};
 
             // by default fetch is a GET request
-            const response = await fetch("http://localhost:5000/auth/register",{
+            const response = await fetch("https://heypm-backend.herokuapp.com/auth/register",{
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(body)
