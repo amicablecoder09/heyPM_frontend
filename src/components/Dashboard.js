@@ -46,7 +46,9 @@ const Dashboard = ({ setAuth }) => {
             });
             const parseRes = await response.json();
 
-            setName(parseRes.user_name);
+            const fullname = parseRes.user_name;
+            const name = fullname.split(" ")[0];
+            setName(name);
             // try {
             //   const response = await fetch("https://heypm-backend.herokuapp.com/getContent",{
             //       method: "GET",
@@ -103,9 +105,9 @@ const Dashboard = ({ setAuth }) => {
               redirectlink = {usersState.content[0].redirectlink}
               /> */}
 
-              <button className={styles.logout} 
+              {/* <button className={styles.logout} 
               onClick= {e => logout(e)} >Logout
-              </button> 
+              </button>  */}
 
             </div>
             <ToastContainer />

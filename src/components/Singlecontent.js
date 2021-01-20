@@ -6,6 +6,7 @@ const Singlecontent = (props) => {
 
     // Now from dashboard we can pass what contents need to be displayed
     // the rendering of content will be done in this section
+    const [contentButtonName, setContentButtonName] = useState("");
     const [contentType, setContentType] = useState("");
     const [contentHeading , setContentHeading] = useState("");
     const [contentImageLink, setContentImageLink] = useState("");
@@ -13,6 +14,7 @@ const Singlecontent = (props) => {
     const [contentText, setContentText] = useState("");
     const [contentSourceLink, setContentSourceLink ] = useState("");
 
+    const [contentButtonName1, setContentButtonName1] = useState("");
     const [contentType1, setContentType1] = useState("");
     const [contentHeading1 , setContentHeading1] = useState("");
     const [contentImageLink1, setContentImageLink1] = useState("");
@@ -20,6 +22,7 @@ const Singlecontent = (props) => {
     const [contentText1, setContentText1] = useState("");
     const [contentSourceLink1, setContentSourceLink1 ] = useState("");
 
+    const [contentButtonName2, setContentButtonName2] = useState("");
     const [contentType2, setContentType2] = useState("");
     const [contentHeading2 , setContentHeading2] = useState("");
     const [contentImageLink2, setContentImageLink2] = useState("");
@@ -35,8 +38,9 @@ const Singlecontent = (props) => {
                 headers: {token: localStorage.token}
             });
             const contentRes = await response.json();
-            console.log(contentRes);
+            // console.log(contentRes);
 
+            setContentButtonName( contentRes[0].source_name);
             setContentType( contentRes[0].content_type);
             setContentHeading( contentRes[0].title);
             setContentImageLink( contentRes[0].content_link);
@@ -44,6 +48,7 @@ const Singlecontent = (props) => {
             setContentText( contentRes[0].content_body);
             setContentSourceLink( contentRes[0].source_link);
 
+            setContentButtonName1( contentRes[1].source_name);
             setContentType1( contentRes[1].content_type);
             setContentHeading1( contentRes[1].title);
             setContentImageLink1( contentRes[1].content_link);
@@ -51,6 +56,7 @@ const Singlecontent = (props) => {
             setContentText1( contentRes[1].content_body);
             setContentSourceLink1( contentRes[1].source_link);
 
+            setContentButtonName2( contentRes[2].source_name);
             setContentType2( contentRes[2].content_type);
             setContentHeading2( contentRes[2].title);
             setContentImageLink2( contentRes[2].content_link);
@@ -72,6 +78,7 @@ const Singlecontent = (props) => {
         <Fragment>    
         <div >
             <Content
+              contentButtonName = {contentButtonName}
               contenttype = {contentType}
               heading = {contentHeading}
               contentlink = {contentImageLink}
@@ -81,6 +88,7 @@ const Singlecontent = (props) => {
               />
 
             <Content
+            contentButtonName = {contentButtonName1}
               contenttype = {contentType1}
               heading = {contentHeading1}
               contentlink = {contentImageLink1}
@@ -90,6 +98,7 @@ const Singlecontent = (props) => {
               />
 
             <Content
+            contentButtonName = {contentButtonName2}
               contenttype = {contentType2}
               heading = {contentHeading2}
               contentlink = {contentImageLink2}

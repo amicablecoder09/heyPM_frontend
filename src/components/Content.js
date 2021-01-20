@@ -62,7 +62,7 @@ const Content = (props) => {
             </div>
             <div>
             <a href = {props.redirectlink} target="_blank" >
-                <button className = "buttonlink">Know More</button>
+                <button className = "buttonlink">{props.contentButtonName}</button>
             </a>
             </div>
         </div>

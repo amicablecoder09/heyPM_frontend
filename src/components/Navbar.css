@@ -3,7 +3,9 @@
 	margin: auto;
 	border: 0px solid rgb(236, 238, 240);
 	box-shadow: 0 2px 5px rgb(155, 155, 155);
-	padding: 16px;
+	/* padding: 16px; */
+	padding-top: 16px;
+	padding-bottom: 16px;
 	display: flex;
 	flex-direction: row;
 	align-content: center;
@@ -16,14 +18,15 @@
 
 .left-header {
 	display: flex;
+	padding-left: 16px;
 }
 
-.profile {
-	background: lightblue;
+.profile img {
+	/* background: lightblue; */
 	border-radius: 50%;
-	width: 40px;
+	width: 60px; /*40px */
 	height: 40px;
-	margin-right: 10px;
+	margin-right: 0px; /*10px */
 	margin-top: 0px;
 	/* display: flex;
     align-content: center; */
@@ -43,7 +46,8 @@
 	/* float: right;
 	display: flex;
     text-align: right;
-    Im not sure about this also*/
+	Im not sure about this also*/
+	padding-right: 16px;
 	display: flex;
 	margin-top: 10px;
 	font-weight: bold;

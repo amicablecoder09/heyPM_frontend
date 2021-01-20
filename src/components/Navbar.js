@@ -2,6 +2,7 @@ import React from 'react';
 import './Navbar.css';
 import { FaBookmark } from 'react-icons/fa';
 
+import loginicon from '../assets/loginicon.png';
 
 
 const navbar = (props) => {
@@ -13,12 +14,14 @@ const navbar = (props) => {
     const savedIconClick = () => {
         console.log("Clicked on saved icon");
     }
+    
 
     return (
         <div className = "Navbar">
             <div className="left-header">
                 <div className = "profile" onClick = {profileClick}>
                     {/* Profile is made visible here*/}
+                    <img src={loginicon} /> 
                 </div>
                 <div className = "profile-name">
                     <p>Hello, {props.name}</p>
