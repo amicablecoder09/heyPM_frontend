@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import Styles from "./SavedStyles.module.css";
 
 import Navbar from './Navbar';
@@ -17,7 +17,6 @@ const Saved = (props) => {
     try {
           const userid = props.location.state.userid; 
           const body = {userid};
-          console.log(JSON.stringify(body))
       
           const response = await fetch("https://heypm-backend.herokuapp.com/getbookmarkContent",{
               method: "POST",
@@ -25,9 +24,6 @@ const Saved = (props) => {
               body: JSON.stringify(body)
           });
           const contentRes = await response.json();
-          
-          console.log(response.json);
-          console.log(contentRes);
 
           setContentData(contentRes);
           setUserID(props.location.state.userid);
@@ -44,31 +40,33 @@ const Saved = (props) => {
 
 
     return (
-        <div>
-          { userID.length !== 0 &&
+        <Fragment>
+          { userID.length !== 0 && contentData.length !==0 &&
             <div className="App">
-              <Navbar name = "" savedbutton ="dontshow"/>
+              <Navbar name = {props.location.state.username} savedbutton ="dontshow"/>
                 <div className = {Styles.outer}>
-                
-                  {/* <Route path = '/Savedtypebutton' component = {Savedtypebutton}/> */}
                   <Savedtypebutton />
+                  {contentData.map(content =>(
+                      <Content
+                          key = {content.content_id}
+                          isbookmarked = {true}
+                        userid ={props.location.state.userid}
+                        contentButtonName = {content.source_name}
+                        contenttype = {content.content_type}
+                        heading = {content.title}
+                        contentlink = {content.content_link}
+                        tag = {content.tags}
+                        text = {content.content_body}
+                        redirectlink = {content.source_link}
+                        contentID = {content.content_id}
+                        />
+                    ))
+                  }
 
-                  <Route >                
-                  {/* <Content
-                    heading = {usersState.content[0].heading}
-                    imagelink = {usersState.content[0].imagelink}
-                    tag = {usersState.content[0].tag}
-                    text = {usersState.content[0].text}
-                    redirectlink = {usersState.content[0].redirectlink}
-                    /> */}
-
-
-                  </Route>
                 </div>
-
               </div>
           } 
-        </div>
+        </Fragment>
     );
 }
 

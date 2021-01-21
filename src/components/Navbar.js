@@ -30,7 +30,7 @@ const navbar = (props) => {
             </div>
             { props.savedbutton === "Show" ? 
                 (<div className = "saved" onClick = {savedIconClick}> 
-                <Link to={{pathname: '/saved', state: { userid: props.userid} }} > <p><FaBookmark className="bookmark"/>  Saved </p> </Link> 
+                <Link to={{pathname: '/saved', state: { userid: props.userid, username: props.name} }} > <p><FaBookmark className="bookmark"/>  Saved </p> </Link> 
                 </div> )
                 :
                 (<div></div> )

@@ -58,6 +58,9 @@ const Content = (props) => {
         
     }
     
+    useEffect(()=>{
+        setBookmark(props.isbookmarked);
+    },[]); 
 
     return (        
         <div className = "content">

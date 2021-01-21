@@ -35,6 +35,7 @@ const Singlecontent = (props) => {
           {contentData.map(content =>(
             <Content
                 key = {content.content_id}
+                isbookmarked = {false}
               userid ={props.userid}
               contentButtonName = {content.source_name}
               contenttype = {content.content_type}
