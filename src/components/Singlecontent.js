@@ -6,30 +6,8 @@ const Singlecontent = (props) => {
 
     // Now from dashboard we can pass what contents need to be displayed
     // the rendering of content will be done in this section
-    const [contentButtonName, setContentButtonName] = useState("");
-    const [contentType, setContentType] = useState("");
-    const [contentHeading , setContentHeading] = useState("");
-    const [contentImageLink, setContentImageLink] = useState("");
-    const [contentTag, setContentTag] = useState("");
-    const [contentText, setContentText] = useState("");
-    const [contentSourceLink, setContentSourceLink ] = useState("");
 
-    const [contentButtonName1, setContentButtonName1] = useState("");
-    const [contentType1, setContentType1] = useState("");
-    const [contentHeading1 , setContentHeading1] = useState("");
-    const [contentImageLink1, setContentImageLink1] = useState("");
-    const [contentTag1, setContentTag1] = useState("");
-    const [contentText1, setContentText1] = useState("");
-    const [contentSourceLink1, setContentSourceLink1 ] = useState("");
-
-    const [contentButtonName2, setContentButtonName2] = useState("");
-    const [contentType2, setContentType2] = useState("");
-    const [contentHeading2 , setContentHeading2] = useState("");
-    const [contentImageLink2, setContentImageLink2] = useState("");
-    const [contentTag2, setContentTag2] = useState("");
-    const [contentText2, setContentText2] = useState("");
-    const [contentSourceLink2, setContentSourceLink2 ] = useState("");
-    
+    const [contentData, setContentData] = useState([]);
 
     async function getAllContent(){
         try {
@@ -39,31 +17,8 @@ const Singlecontent = (props) => {
             });
             const contentRes = await response.json();
             // console.log(contentRes);
+            setContentData(contentRes);
 
-            setContentButtonName( contentRes[0].source_name);
-            setContentType( contentRes[0].content_type);
-            setContentHeading( contentRes[0].title);
-            setContentImageLink( contentRes[0].content_link);
-            setContentTag( contentRes[0].tags);
-            setContentText( contentRes[0].content_body);
-            setContentSourceLink( contentRes[0].source_link);
-
-            setContentButtonName1( contentRes[1].source_name);
-            setContentType1( contentRes[1].content_type);
-            setContentHeading1( contentRes[1].title);
-            setContentImageLink1( contentRes[1].content_link);
-            setContentTag1( contentRes[1].tags);
-            setContentText1( contentRes[1].content_body);
-            setContentSourceLink1( contentRes[1].source_link);
-
-            setContentButtonName2( contentRes[2].source_name);
-            setContentType2( contentRes[2].content_type);
-            setContentHeading2( contentRes[2].title);
-            setContentImageLink2( contentRes[2].content_link);
-            setContentTag2( contentRes[2].tags);
-            setContentText2( contentRes[2].content_body);
-            setContentSourceLink2( contentRes[2].source_link);
-                        
         } catch (err) {
             console.error(err.message);
         }
@@ -72,42 +27,27 @@ const Singlecontent = (props) => {
     useEffect(()=>{
         getAllContent();
     },[]);
-    
 
-    return (    
-        <Fragment>    
-        <div >
+    return (
+        <Fragment>
+        {contentData.length === 3 &&
+        <div>
+          {contentData.map(content =>(
             <Content
-              contentButtonName = {contentButtonName}
-              contenttype = {contentType}
-              heading = {contentHeading}
-              contentlink = {contentImageLink}
-              tag = {contentTag}
-              text = {contentText}
-              redirectlink = {contentSourceLink}
+                key = {content.content_id}
+              userid ={props.userid}
+              contentButtonName = {content.source_name}
+              contenttype = {content.content_type}
+              heading = {content.title}
+              contentlink = {content.content_link}
+              tag = {content.tags}
+              text = {content.content_body}
+              redirectlink = {content.source_link}
+              contentID = {content.content_id}
               />
-
-            <Content
-            contentButtonName = {contentButtonName1}
-              contenttype = {contentType1}
-              heading = {contentHeading1}
-              contentlink = {contentImageLink1}
-              tag = {contentTag1}
-              text = {contentText1}
-              redirectlink = {contentSourceLink1}
-              />
-
-            <Content
-            contentButtonName = {contentButtonName2}
-              contenttype = {contentType2}
-              heading = {contentHeading2}
-              contentlink = {contentImageLink2}
-              tag = {contentTag2}
-              text = {contentText2}
-              redirectlink = {contentSourceLink2}
-              />
-                     
+          ))}
         </div>
+      }
         </Fragment>
     );
 }

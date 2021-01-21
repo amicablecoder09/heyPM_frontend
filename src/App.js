@@ -20,6 +20,7 @@ import Intro from "./components/Intro"
 import Dashboard from "./components/Dashboard"
 import Login from "./components/Login"
 import Register from "./components/Register"
+import Saved from "./components/Saved";
 
 
 
@@ -77,6 +78,11 @@ function App() {
         <Route exact path="/dashboard" 
         render = {props => isAuthenticated ? 
         (<Dashboard {...props} setAuth = {setAuth} />) : (<Redirect to ="/login" />) } />
+
+        <Route exact path="/saved" 
+        render = {props => isAuthenticated ? 
+        (<Saved {...props} setAuth = {setAuth} />) : (<Redirect to ="/login" />) } />
+
       </Switch> 
       </div>
       

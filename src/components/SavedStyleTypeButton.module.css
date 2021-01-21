@@ -1,0 +1,40 @@
+.savediv {
+	height: 80px;
+	width: 100%;
+	margin: auto;
+	margin-top: 20px;
+	/* display: flex;
+    flex-direction: row;
+    justify-content: center; */
+}
+
+.saveddiv h4 {
+	color: rgb(155, 155, 155);
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.savedbuttons {
+	display: flex;
+	flex-direction: row;
+	margin: 20px;
+	justify-content: space-between;
+}
+.savedbuttons Button {
+	display: inline-block;
+	margin: 5px;
+	color: rgb(243, 114, 114);
+	border: 1px solid rgb(243, 114, 114);
+	border-radius: 5px;
+	/* font-size: small; */
+	font-size: 15px;
+	height: 30px;
+	cursor: pointer;
+}
+.savedbuttons p {
+	justify-content: right;
+	color: rgb(155, 155, 155);
+	font-size: 14px;
+	cursor: pointer;
+}

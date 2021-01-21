@@ -3,10 +3,11 @@ import './Navbar.css';
 import { FaBookmark } from 'react-icons/fa';
 
 import loginicon from '../assets/loginicon.png';
-
+import { Link } from 'react-router-dom';
 
 const navbar = (props) => {
 
+    
     const profileClick = () => {
         console.log("Clicked on profile");
     }
@@ -27,9 +28,14 @@ const navbar = (props) => {
                     <p>Hello, {props.name}</p>
                 </div>
             </div>
-            <div className = "saved" onClick = {savedIconClick}>
-                <p><FaBookmark className="bookmark"/> Saved</p>
-            </div>
+            { props.savedbutton === "Show" ? 
+                (<div className = "saved" onClick = {savedIconClick}> 
+                <Link to={{pathname: '/saved', state: { userid: props.userid} }} > <p><FaBookmark className="bookmark"/>  Saved </p> </Link> 
+                </div> )
+                :
+                (<div></div> )
+            }
+            
         </div>
     );
 }

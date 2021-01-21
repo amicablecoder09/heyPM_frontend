@@ -7,6 +7,7 @@
 	margin-top: 20px;
 	display: flex;
 	flex-direction: column;
+	padding-bottom: 15px;
 }
 
 .heading {
@@ -66,15 +67,31 @@
     font-size: 20x;
     padding: 10px;
 } */
+.wrapper {
+	text-align: center;
+}
+.wrapper a {
+	text-decoration: none;
+}
+
 .buttonlink {
-	width: 60%;
+	width: 80%;
 	border: 2px solid rgb(243, 114, 114);
-	margin: auto;
+	/* margin: auto; */
 	border-radius: 8px;
 	text-align: center;
-	color: rgb(243, 114, 114);
+	color: rgb(187, 81, 81);
 	margin-bottom: 10px;
 	font-size: 20x;
 	padding: 10px;
-	margin-left: 90px;
+	/* margin-left: 90px; wrong practice */
+
+	background-color: white;
+	display: table;
+	margin: 0 auto;
+	font-size: 15px;
+	cursor: pointer;
+}
+.button-arrow-icon {
+	padding-left: 14px;
 }

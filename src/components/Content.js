@@ -2,16 +2,62 @@ import React, {useState, useEffect } from 'react';
 import './Content.css';
 //import ReactPlayer from 'react-player';
 import { FaBookmark, FaRegBookmark } from 'react-icons/fa';
+import { IoArrowForward } from 'react-icons/io5';
+
 
 const Content = (props) => {
 
     //console.log(props.data);
     // Now from dashboard we can pass what contents need to be displayed
     // the rendering of content will be done in this section
-    const toggleSaved = () => {
+    const [bookmark, setBookmark] = useState(false);
+
+    const toggleSaved = async() => {
+
         console.log("Saved state changed");
         
+        const userID= props.userid;
+        const contentID = props.contentID;
+
+        const body = {userID, contentID};
+
+        console.log(body);
+        if (bookmark) {
+            try {
+
+                const response = await fetch("https://heypm-backend.herokuapp.com/removebookmarkContent",{
+                    method: "POST",
+                    headers: {"Content-Type": "application/json", token: localStorage.token},
+                    body: JSON.stringify(body)
+                });
+                const contentRes = await response.json();
+                // Toast is needed
+                console.log(contentRes);
+                setBookmark(false);
+    
+            } catch (err) {
+                console.error(err.message);
+            }
+        }
+        else{
+            try {
+                const response = await fetch("https://heypm-backend.herokuapp.com/bookmarkContent",{
+                    method: "POST",
+                    headers: {"Content-Type": "application/json", token: localStorage.token},
+                    body: JSON.stringify(body)
+                });
+                const contentRes = await response.json();
+                // Toast is needed
+                console.log(contentRes);
+                setBookmark(true);
+    
+            } catch (err) {
+                console.error(err.message);
+            }
+        }
+        
     }
+    
 
     return (        
         <div className = "content">
@@ -54,16 +100,17 @@ const Content = (props) => {
                     <a>{props.tag}</a>
                 </div>
                 <div className = "saved" onClick = {toggleSaved}>
-                    <FaRegBookmark/> 
+                {bookmark === true ?  (<FaBookmark/>) : (<FaRegBookmark/>) } 
                 </div>
             </div>
             <div className = "text">
                 <p> {props.text} </p>
             </div>
-            <div>
-            <a href = {props.redirectlink} target="_blank" >
-                <button className = "buttonlink">{props.contentButtonName}</button>
-            </a>
+            <div  className="wrapper">
+                <a href = {props.redirectlink} target="_blank" >
+                    <button className = "buttonlink">{props.contentButtonName}
+                    <IoArrowForward className="button-arrow-icon"/> </button>
+                </a>
             </div>
         </div>
     );
