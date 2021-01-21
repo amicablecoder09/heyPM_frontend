@@ -41,10 +41,11 @@ const Saved = (props) => {
 
     return (
         <Fragment>
-          { userID.length !== 0 && contentData.length !==0 &&
+          { userID.length !== 0 && 
             <div className="App">
-              <Navbar name = {props.location.state.username} savedbutton ="dontshow"/>
-                <div className = {Styles.outer}>
+              <Navbar name = {props.location.state.username} savedbutton ="dontshow"/> 
+              {contentData.length !== 0 ? 
+                (<div className = {Styles.outer}>
                   <Savedtypebutton />
                   {contentData.map(content =>(
                       <Content
@@ -62,8 +63,9 @@ const Saved = (props) => {
                         />
                     ))
                   }
-
-                </div>
+                </div>): (<div>No content is bookmarked! </div>)
+                
+              }
               </div>
           } 
         </Fragment>
