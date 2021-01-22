@@ -1,6 +1,7 @@
 import React from 'react';
 import './Navbar.css';
 import { FaBookmark } from 'react-icons/fa';
+import { GrPrevious } from "react-icons/gr";
 
 import loginicon from '../assets/loginicon.png';
 import { Link } from 'react-router-dom';
@@ -20,9 +21,14 @@ const navbar = (props) => {
     return (
         <div className = "Navbar">
             <div className="left-header">
+
+                { props.backbutton === "Show" ? 
+                <Link to="/dashboard"> <GrPrevious className="previousPageIcon" /> </Link> : 
+                <div></div> }
+
                 <div className = "profile" onClick = {profileClick}>
                     {/* Profile is made visible here*/}
-                    <img src={loginicon} /> 
+                    <img src={loginicon} alt="" /> 
                 </div>
                 <div className = "profile-name">
                     <p>Hello, {props.name}</p>

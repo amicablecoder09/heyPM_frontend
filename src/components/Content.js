@@ -7,21 +7,17 @@ import { IoArrowForward } from 'react-icons/io5';
 
 const Content = (props) => {
 
-    //console.log(props.data);
-    // Now from dashboard we can pass what contents need to be displayed
-    // the rendering of content will be done in this section
     const [bookmark, setBookmark] = useState(false);
+    const [savedPage, setSavedPage] = useState(false);
 
     const toggleSaved = async() => {
-
-        console.log("Saved state changed");
         
         const userID= props.userid;
         const contentID = props.contentID;
-
         const body = {userID, contentID};
 
         console.log(body);
+        
         if (bookmark) {
             try {
 
@@ -32,8 +28,10 @@ const Content = (props) => {
                 });
                 const contentRes = await response.json();
                 // Toast is needed
-                console.log(contentRes);
                 setBookmark(false);
+                if (savedPage) {
+                    props.removeBookmarkContentChild(props.contentID);
+                  }
     
             } catch (err) {
                 console.error(err.message);
@@ -54,16 +52,18 @@ const Content = (props) => {
             } catch (err) {
                 console.error(err.message);
             }
-        }
-        
+        }        
     }
     
     useEffect(()=>{
         setBookmark(props.isbookmarked);
+        setSavedPage(props.isSavedPage);
+        console.log(props.isbookmarked);
     },[]); 
 
-    return (        
+    return (       
         <div className = "content">
+            
             <div className = "heading">
                 <h2>{props.heading}</h2>
             </div>
@@ -72,6 +72,7 @@ const Content = (props) => {
             {props.contenttype === "Videos" ?
                 (<div className = "image">
                         <iframe 
+                        title="No title set"
                         width="100%" 
                         height="100%"
                         margin = "auto"
@@ -85,7 +86,7 @@ const Content = (props) => {
                         </iframe> 
                 </div>) :
                 (<div className = "image">                    
-                    <img src = {props.contentlink} />
+                    <img src = {props.contentlink} alt="" />
                     
                     {/* https://www.youtube.com/embed/_Hp_dI0DzY4" */}
 
@@ -100,7 +101,7 @@ const Content = (props) => {
 
             <div className = "tag-saved">
                 <div className = "tag">
-                    <a>{props.tag}</a>
+                    <a > { props.tag } </a>
                 </div>
                 <div className = "saved" onClick = {toggleSaved}>
                 {bookmark === true ?  (<FaBookmark/>) : (<FaRegBookmark/>) } 
@@ -110,7 +111,7 @@ const Content = (props) => {
                 <p> {props.text} </p>
             </div>
             <div  className="wrapper">
-                <a href = {props.redirectlink} target="_blank" >
+                <a href = {props.redirectlink} target="_blank" rel="noreferrer" >
                     <button className = "buttonlink">{props.contentButtonName}
                     <IoArrowForward className="button-arrow-icon"/> </button>
                 </a>

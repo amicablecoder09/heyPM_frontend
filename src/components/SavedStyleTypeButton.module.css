@@ -24,13 +24,14 @@
 .savedbuttons Button {
 	display: inline-block;
 	margin: 5px;
-	color: rgb(243, 114, 114);
-	border: 1px solid rgb(243, 114, 114);
+	color: #ec5f5f;
+	border: 1px solid #ec5f5f;
 	border-radius: 5px;
 	/* font-size: small; */
 	font-size: 15px;
 	height: 30px;
 	cursor: pointer;
+	background-color: white;
 }
 .savedbuttons p {
 	justify-content: right;

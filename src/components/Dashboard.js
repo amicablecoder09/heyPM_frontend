@@ -1,9 +1,8 @@
 import React, {Fragment, useState, useEffect } from "react";
 
-import { ToastContainer, toast } from 'react-toastify';
+// import { ToastContainer, toast } from 'react-toastify';
 import Navbar from "./Navbar"
 import styles from "./dashboardStyles.module.css";
-import Content from "./Content"
 import Singlecontent from "./Singlecontent";
 
 
@@ -29,12 +28,12 @@ const Dashboard = ({ setAuth }) => {
         }
     }
 
-    const logout = (e) =>{
-        e.preventDefault();
-        localStorage.removeItem("token");
-        setAuth(false);
-        toast("Logged out successfully!"); // not working
-    };
+    // const logout = (e) =>{
+    //     e.preventDefault();
+    //     localStorage.removeItem("token");
+    //     setAuth(false);
+    //     toast("Logged out successfully!"); // not working
+    // };
 
     useEffect(()=>{
         getName()
@@ -44,10 +43,10 @@ const Dashboard = ({ setAuth }) => {
     return (
       
         <Fragment>
-          { userID.length != 0 &&
+          { userID.length !== 0 &&
             <div className="container-dashboard">
               
-              <Navbar name = { name } savedbutton ="Show" userid ={ userID }  />
+              <Navbar name = { name } savedbutton ="Show" userid ={ userID } backbutton="dont show" />
               {/* earlier to call name we used usersState.persons[0].name */}            
               <div className = {styles.outer}>              
                 <Singlecontent userid ={ userID } />
@@ -55,7 +54,7 @@ const Dashboard = ({ setAuth }) => {
                 onClick= {e => logout(e)} >Logout
                 </button>  */}
               </div>
-              <ToastContainer />
+              {/* <ToastContainer /> */}
             </div>
           }
         </Fragment>

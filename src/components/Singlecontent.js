@@ -8,6 +8,7 @@ const Singlecontent = (props) => {
     // the rendering of content will be done in this section
 
     const [contentData, setContentData] = useState([]);
+    const [bookmarkID, setBookmarkID] = useState([]);
 
     async function getAllContent(){
         try {
@@ -16,8 +17,60 @@ const Singlecontent = (props) => {
                 headers: {token: localStorage.token}
             });
             const contentRes = await response.json();
-            // console.log(contentRes);
-            setContentData(contentRes);
+            
+            //setContentData(contentRes);
+            try {
+                // to get content id bookmarked by the user today
+                const userid = props.userid;
+                const body = {userid};
+                const bookmarkIdResponse = await fetch("https://heypm-backend.herokuapp.com/getbookmarkID", {
+                    method: "POST",
+                    headers:{"Content-Type": "application/json", token:localStorage.token},
+                    body: JSON.stringify(body)
+                });
+                const bookmarkIdRes =await bookmarkIdResponse.json();
+                setBookmarkID(bookmarkIdRes);
+                if (bookmarkID.length === 0) {
+                    setContentData(contentRes);
+                  } else {
+                    for (var i = 0; i < contentRes.length; i++) {
+                      let flag = false;
+                      for (var j = 0; j < bookmarkID.length; j++) {
+                        if (contentRes[i].content_id === bookmarkID[j].content_id) {
+                          flag = true;
+                          setContentData([ ...contentData, {
+                            isbookmarked: true,
+                            source_name: contentRes[i].source_name,
+                            content_type: contentRes[i].content_type,
+                            title: contentRes[i].title,
+                            content_link: contentRes[i].content_link,
+                            tags: contentRes[i].tags,
+                            content_body: contentRes[i].content_body,
+                            source_link: contentRes[i].source_link,
+                            content_id: contentRes[i].content_id
+                          }]);
+                          break;
+                        }
+                      }
+                      if (!flag) {
+                        setContentData([ ...contentData, {
+                          isbookmarked: false,
+                          source_name: contentRes[i].source_name,
+                          content_type: contentRes[i].content_type,
+                          title: contentRes[i].title,
+                          content_link: contentRes[i].content_link,
+                          tags: contentRes[i].tags,
+                          content_body: contentRes[i].content_body,
+                          source_link: contentRes[i].source_link,
+                          content_id: contentRes[i].content_id
+                        }]);
+                      }
+                    }
+                  }
+
+            } catch (err) {
+                console.log(err.message);
+            }
 
         } catch (err) {
             console.error(err.message);
@@ -35,7 +88,7 @@ const Singlecontent = (props) => {
           {contentData.map(content =>(
             <Content
                 key = {content.content_id}
-                isbookmarked = {false}
+                isbookmarked = {content.isbookmarked}
               userid ={props.userid}
               contentButtonName = {content.source_name}
               contenttype = {content.content_type}

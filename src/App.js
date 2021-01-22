@@ -10,7 +10,7 @@ import {
 } from "react-router-dom";
 
 // react-toastify
-import { ToastContainer, toast } from 'react-toastify';
+//import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -52,10 +52,7 @@ function App() {
 
   useEffect(()=>{
     isAuth()
-  })
-
-  {/* Yatin code  className="container" */}
-  
+  })  
 
   return (
   <Fragment>

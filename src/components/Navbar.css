@@ -21,6 +21,11 @@
 	padding-left: 16px;
 }
 
+.previousPageIcon {
+	height: 40px;
+	width: 23px;
+}
+
 .profile img {
 	/* background: lightblue; */
 	border-radius: 50%;
@@ -52,6 +57,7 @@
 	margin-top: 10px;
 	font-weight: bold;
 	font-size: 15px;
+	color: #303030;
 }
 
 .bookmark {

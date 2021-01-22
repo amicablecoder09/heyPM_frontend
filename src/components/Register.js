@@ -65,7 +65,7 @@ const Register = ({setAuth}) => {
                 <h6><span> or </span></h6>
                 </div>
                 <div>
-                    <button className={styles.linkedin}> Log in with LinkedIn </button>
+                    <button className={styles.linkedin}> Sign Up with LinkedIn </button>
                 </div>
                 <p className={styles.termsAndCondition}>By signing up you accept the 
                 <a href="www.google.com" >Terms of Service</a> <br/> and 
