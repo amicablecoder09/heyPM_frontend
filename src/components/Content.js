@@ -3,7 +3,9 @@ import './Content.css';
 //import ReactPlayer from 'react-player';
 import { FaBookmark, FaRegBookmark } from 'react-icons/fa';
 import { IoArrowForward } from 'react-icons/io5';
+import { toast } from 'react-toastify';
 
+toast.configure();
 
 const Content = (props) => {
 
@@ -11,13 +13,11 @@ const Content = (props) => {
     const [savedPage, setSavedPage] = useState(false);
 
     const toggleSaved = async() => {
-        
+
         const userID= props.userid;
         const contentID = props.contentID;
         const body = {userID, contentID};
 
-        console.log(body);
-        
         if (bookmark) {
             try {
 
@@ -27,14 +27,17 @@ const Content = (props) => {
                     body: JSON.stringify(body)
                 });
                 const contentRes = await response.json();
-                // Toast is needed
+                toast.error(contentRes,
+                  {autoClose:2000, position: toast.POSITION.BOTTOM_RIGHT});
                 setBookmark(false);
                 if (savedPage) {
                     props.removeBookmarkContentChild(props.contentID);
                   }
-    
+
             } catch (err) {
-                console.error(err.message);
+              toast.error(err.message,
+                {autoClose:2000, position: toast.POSITION.BOTTOM_RIGHT});
+                //console.error(err.message);
             }
         }
         else{
@@ -45,25 +48,26 @@ const Content = (props) => {
                     body: JSON.stringify(body)
                 });
                 const contentRes = await response.json();
-                // Toast is needed
-                console.log(contentRes);
+                toast.success(contentRes,
+                  {autoClose:2000, position: toast.POSITION.BOTTOM_RIGHT});
                 setBookmark(true);
-    
+
             } catch (err) {
-                console.error(err.message);
+                toast.error(err.message,
+                  {autoClose:2000, position: toast.POSITION.BOTTOM_RIGHT});
+                //console.error(err.message);
             }
-        }        
+        }
     }
-    
+
     useEffect(()=>{
         setBookmark(props.isbookmarked);
         setSavedPage(props.isSavedPage);
-        console.log(props.isbookmarked);
-    },[]); 
+    },[]);
 
-    return (       
+    return (
         <div className = "content">
-            
+
             <div className = "heading">
                 <h2>{props.heading}</h2>
             </div>
@@ -71,40 +75,40 @@ const Content = (props) => {
             <div>
             {props.contenttype === "Videos" ?
                 (<div className = "image">
-                        <iframe 
+                        <iframe
                         title="No title set"
-                        width="100%" 
+                        width="100%"
                         height="100%"
                         margin = "auto"
-                        display = "block" 
+                        display = "block"
                         border-radius = "20px"
                         src={props.contentlink}
-                        frameBorder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
                         >
-                        </iframe> 
+                        </iframe>
                 </div>) :
-                (<div className = "image">                    
+                (<div className = "image">
                     <img src = {props.contentlink} alt="" />
-                    
+
                     {/* https://www.youtube.com/embed/_Hp_dI0DzY4" */}
 
-                    {/* <ReactPlayer 
+                    {/* <ReactPlayer
                         width = '100%'
                         height = '100%'
                         url = ''/> */}
                 </div>)
             }
             </div>
-            
+
 
             <div className = "tag-saved">
                 <div className = "tag">
                     <a > { props.tag } </a>
                 </div>
                 <div className = "saved" onClick = {toggleSaved}>
-                {bookmark === true ?  (<FaBookmark/>) : (<FaRegBookmark/>) } 
+                {bookmark === true ?  (<FaBookmark/>) : (<FaRegBookmark/>) }
                 </div>
             </div>
             <div className = "text">

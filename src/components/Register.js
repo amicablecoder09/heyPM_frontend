@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { ToastContainer, toast } from 'react-toastify';
 
-import {ReactComponent as LogoIcon } from "../assets/mainlogo.svg"; 
+import {ReactComponent as LogoIcon } from "../assets/mainlogo.svg";
 import styles from "./registerStyles.module.css"
 
 const Register = ({setAuth}) => {
@@ -44,16 +44,16 @@ const Register = ({setAuth}) => {
                 toast.error(parseRes);
             }
         } catch (err) {
-            console.error(err.message);
+            //console.error(err.message);
         }
     }
 
     return (
         <Fragment>
-            <div className={styles.container}> 
+            <div className={styles.container}>
                 <LogoIcon className={styles.logo} />
                 <form onSubmit={onSubmitForm} >
-                    
+
                     <input type = "text" name="name" placeholder="Fullname" className={styles.input} value={name} onChange={e => onChange(e) } />
                     <input type = "email" name="email" placeholder="Email" className={styles.input} value={email} onChange={e => onChange(e) } />
                     <input type = "password" name="password" placeholder="Password" className={styles.input} value={password} onChange={e => onChange(e) } />
@@ -67,8 +67,8 @@ const Register = ({setAuth}) => {
                 <div>
                     <button className={styles.linkedin}> Sign Up with LinkedIn </button>
                 </div>
-                <p className={styles.termsAndCondition}>By signing up you accept the 
-                <a href="www.google.com" >Terms of Service</a> <br/> and 
+                <p className={styles.termsAndCondition}>By signing up you accept the
+                <a href="www.google.com" >Terms of Service</a> <br/> and
                 <a href="www.google.com"> Privacy Policy</a>
                 </p>
                 <div className={styles.footer}>

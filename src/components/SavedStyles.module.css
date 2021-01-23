@@ -2,3 +2,17 @@
 	max-width: 500px;
 	margin: auto;
 }
+
+.center {
+	display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30em;
+}
+
+.center p {
+	border: 3px solid #ec5f5f;
+  padding: 10px;
+  border-radius: 5px;
+  color: #ec5f5f;
+}

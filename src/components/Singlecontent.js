@@ -17,7 +17,7 @@ const Singlecontent = (props) => {
                 headers: {token: localStorage.token}
             });
             const contentRes = await response.json();
-            
+
             //setContentData(contentRes);
             try {
                 // to get content id bookmarked by the user today
@@ -69,11 +69,11 @@ const Singlecontent = (props) => {
                   }
 
             } catch (err) {
-                console.log(err.message);
+                //console.log(err.message);
             }
 
         } catch (err) {
-            console.error(err.message);
+            //console.error(err.message);
         }
     }
 
@@ -87,8 +87,8 @@ const Singlecontent = (props) => {
         <div>
           {contentData.map(content =>(
             <Content
-                key = {content.content_id}
-                isbookmarked = {content.isbookmarked}
+              key = {content.content_id}
+              isbookmarked = {content.isbookmarked}
               userid ={props.userid}
               contentButtonName = {content.source_name}
               contenttype = {content.content_type}

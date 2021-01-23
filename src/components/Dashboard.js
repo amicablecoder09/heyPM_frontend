@@ -24,7 +24,7 @@ const Dashboard = ({ setAuth }) => {
             setName(name);
             setUserId(parseRes.user_id);
         } catch (err) {
-            console.error(err.message);
+            //console.error(err.message);
         }
     }
 
@@ -37,20 +37,20 @@ const Dashboard = ({ setAuth }) => {
 
     useEffect(()=>{
         getName()
-    },[]); // useEffect make many request 
+    },[]); // useEffect make many request
     // by adding [] it will make only 1 request when it is rendered
 
     return (
-      
+
         <Fragment>
           { userID.length !== 0 &&
             <div className="container-dashboard">
-              
+
               <Navbar name = { name } savedbutton ="Show" userid ={ userID } backbutton="dont show" />
-              {/* earlier to call name we used usersState.persons[0].name */}            
-              <div className = {styles.outer}>              
+              {/* earlier to call name we used usersState.persons[0].name */}
+              <div className = {styles.outer}>
                 <Singlecontent userid ={ userID } />
-                {/* <button className={styles.logout} 
+                {/* <button className={styles.logout}
                 onClick= {e => logout(e)} >Logout
                 </button>  */}
               </div>
