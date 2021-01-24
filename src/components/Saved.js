@@ -149,7 +149,7 @@ const Saved = (props) => {
                   </div>
                   <div className = {SavedStyles.savedbuttons}>
                     <div className={SavedStyles.buttongroup}>
-                      <button className = {clickAll ? SavedStyles.clickedsavedbuttons : SavedStyles.defaultsavedbuttons} onClick = {e => applyfilter("All")}>All</button>
+                      {/* <button className = {clickAll ? SavedStyles.clickedsavedbuttons : SavedStyles.defaultsavedbuttons} onClick = {e => applyfilter("All")}>All</button> */}
                       <button className = {clickVideo ? SavedStyles.clickedsavedbuttons : SavedStyles.defaultsavedbuttons} onClick = {e => applyfilter("Videos")}>Videos</button>
                       <button className = {clickArticle ? SavedStyles.clickedsavedbuttons : SavedStyles.defaultsavedbuttons} onClick = {e => applyfilter("Articles")}>Articles</button>
                       <button className = {clickPodcast ? SavedStyles.clickedsavedbuttons : SavedStyles.defaultsavedbuttons} onClick = {e => applyfilter("Podcast")}>Podcast</button>

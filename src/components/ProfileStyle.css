@@ -1,0 +1,53 @@
+.profile-section {
+	width: 90%;
+	margin: auto;
+
+	margin: 20px auto;
+	max-width: 400px;
+	padding: 20px;
+	height: 140;
+	/* border: 1px solid rgb(238, 173, 143); */
+	/* display: flex;
+    align-items: center; */
+}
+
+.profile-header {
+	width: 70%;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+	color: gray;
+}
+
+.profile-picture {
+	width: 70%;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+}
+
+.profile-content {
+	display: flex;
+	justify-content: left;
+}
+
+.question {
+	color: rgb(139, 131, 131);
+	font-size: medium;
+	margin-top: 30px;
+}
+
+.change-password {
+	color: rgb(243, 114, 114);
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.log-out {
+	color: rgb(243, 114, 114);
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+hr {
+	margin: auto;
+	color: darkgrey;
+}

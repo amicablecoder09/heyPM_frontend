@@ -6,6 +6,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import {ReactComponent as LogoIcon } from "../assets/mainlogo.svg";
 import styles from "./registerStyles.module.css"
 
+import GoogleLogin from "react-google-login";
+
 const Register = ({setAuth}) => {
     const [inputs, setInputs] = useState({
         email: "",
@@ -48,6 +50,36 @@ const Register = ({setAuth}) => {
         }
     }
 
+    const responseSuccessGoogle = async(response) => {
+    
+        const body = {tokenId: response.tokenId};
+
+        try {
+            const dbResponse = await fetch("https://heypm-backend.herokuapp.com/auth/googlelogin", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(body)
+            });           
+
+            const dbParseRes = await dbResponse.json();
+            if(dbParseRes.token){
+                localStorage.setItem("token",dbParseRes.token);
+                setAuth(true);
+            }
+            else{
+                setAuth(false);
+                toast.error(dbParseRes);
+            }
+        } 
+        catch (err) {
+            console.log(err.message);
+        }
+    } 
+
+    const responseErrorGoogle = (response) => {
+
+    }
+
     return (
         <Fragment>
             <div className={styles.container}>
@@ -65,7 +97,15 @@ const Register = ({setAuth}) => {
                 <h6><span> or </span></h6>
                 </div>
                 <div>
-                    <button className={styles.linkedin}> Sign Up with LinkedIn </button>
+                    {/* <button className={styles.linkedin}> Sign Up with LinkedIn </button> */}
+                    <GoogleLogin
+                    className= {styles.googlelogin}
+                        clientId="1076435734338-q2ntmvrh08r1m7vl96va9n39l2ke1el1.apps.googleusercontent.com"
+                        buttonText="Sign up with Google"
+                        onSuccess={responseSuccessGoogle}
+                        onFailure={responseErrorGoogle}
+                        cookiePolicy={'single_host_origin'}
+                    />
                 </div>
                 <p className={styles.termsAndCondition}>By signing up you accept the
                 <a href="www.google.com" >Terms of Service</a> <br/> and

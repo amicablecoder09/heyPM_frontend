@@ -5,6 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 import {ReactComponent as LogoIcon } from "../assets/mainlogo.svg";
 import styles from "./loginStyles.module.css";
+import GoogleLogin from "react-google-login";
 
 const Login = ( {setAuth} ) => {
 
@@ -50,6 +51,35 @@ const Login = ( {setAuth} ) => {
         }
     }
 
+    const responseSuccessGoogle = async(response) => {
+    
+        const body = {tokenId: response.tokenId};
+
+        try {
+            const dbResponse = await fetch("https://heypm-backend.herokuapp.com/auth/googlelogin", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(body)
+            });           
+
+            const dbParseRes = await dbResponse.json();
+            if(dbParseRes.token){
+                localStorage.setItem("token",dbParseRes.token);
+                setAuth(true);
+            }
+            else{
+                setAuth(false);
+                toast.error(dbParseRes);
+            }
+        } 
+        catch (err) {
+            console.log(err.message);
+        }
+    } 
+
+    const responseErrorGoogle = (response) => {
+
+    }
 
 
     return (
@@ -74,7 +104,15 @@ const Login = ( {setAuth} ) => {
                 <h6><span> or </span></h6>
                 </div>
                 <div>
-                    <button className={styles.linkedin}> Log in with LinkedIn </button>
+                    {/* <button className={styles.linkedin}> Log in with LinkedIn </button> */}
+                    <GoogleLogin
+                    className= {styles.googlelogin}
+                        clientId="1076435734338-q2ntmvrh08r1m7vl96va9n39l2ke1el1.apps.googleusercontent.com"
+                        buttonText="Log in with Google"
+                        onSuccess={responseSuccessGoogle}
+                        onFailure={responseErrorGoogle}
+                        cookiePolicy={'single_host_origin'}
+                    />
                 </div>
                 <div className={styles.footer}>
                     <p>Don’t have an account?
