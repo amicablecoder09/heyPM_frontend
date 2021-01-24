@@ -46,6 +46,7 @@
 	color: rgb(243, 114, 114);
 	margin-top: 20px;
 	margin-bottom: 20px;
+	cursor: pointer;
 }
 hr {
 	margin: auto;
