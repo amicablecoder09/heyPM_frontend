@@ -11,8 +11,12 @@ const Intro = () =>{
         <Fragment>
         <div className={styles.container}>
             <IntroLogoIcon className={styles.intrologo}/>
-            <div className={styles.getstartedlogo}>
+            {/* <div className={styles.getstartedlogo}>
                 <GetStartedIcon />
+            </div> */}
+            <div className={styles.welcome}>
+                <h4>Welcome to beingPM</h4>
+                <h5>Community for Product Managers</h5>
             </div>
             <Link to="/login"> 
                 <button className={styles.getStartedButton}> Get started </button>
